@@ -24,11 +24,12 @@ function shuffleArray(array) {
 
 function Team (team) {
 	this.name = name;
+	this.setup = [];
 
 }
 
 Team.prototype.Assemble = function () {
-	this.setup = classArray.splice(((numSelected)*m), numSelected);
+	this.setup = classArray.splice(0, numSelected);
 }
 
 $(document).ready(function(){
@@ -50,33 +51,30 @@ $(document).ready(function(){
 		console.log(numOfTeams);
 
 		if (clear == 1){
-			for (m=0; m<=(numOfTeams); m++){
-				var teamID = "Team " + (m+1);
-				console.log(teamID);
+//**So sad, abandoing elegant solution for BFI
+			// for (m=1; m<= numOfTeams; m++){
+			// 	var teamID = "Team " + m;
+			// 	console.log(teamID);
 
-				var newTeam = new Team(teamID);
-		//	console.log(newTeam);
-				$(".results").append("<div class='names'>" + teamID + ": </div>");
-				$(".names").append("<div>" + newTeam.setup + "</div>");
-				$(".names").delay(m*500);
-			} 
+			// 	var newTeam = new Team(teamID,classArray,numSelected);
+			// 	console.log(newTeam);
+
+			// 	$(".results").append("<div class='names'> Team " + m + ": </div>");
+			// 	$(".names").append("<div>" + newTeam.setup + "</div>");
+			// 	$(".names").delay(m*15000);
+			// 	console.log(classArray);
+			// } 
+//**Start below BFI
+			
+			
 			clear++;
-			console.log("Clear after for loop " + clear);
+//			console.log("Clear after for loop " + clear);
 
 		} else {
 			clear--;
 			$(".results").children().remove();
-			console.log("Clear is " + clear);
+//			console.log("Clear is " + clear);
 		}
-
-		
-
-		//use an Array to store 'numSelected' number of names
-		//load headings for each team.  Team 1
-
-		//display team list
-		//then display in a list each of the numSelected' number of names per team
-
 
 	});
 

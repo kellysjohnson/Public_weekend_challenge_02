@@ -44,3 +44,8 @@ p {
 span{
 	font-weight: bold;
 }
+
+.names {
+	display:block;
+	height:20px;
+}
