@@ -1,3 +1,5 @@
+
+
 .button {
 	border: black;
 	background-color: #CCD6E0;
@@ -10,8 +12,23 @@
 	color:#52565A;
 }
 
-.generate{
+.button:hover {
+	background-color: #7094B8;
+	color:black;
+}
 
+.generate{
+	background-color: #CCD6E0;
+	height:50px;
+	width:200px;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 30px;
+	color: #336699;
+	font-weight: bold;
+	margin-left: 370px;
+	padding-top: 10px;
+	margin-top: 10px;
 }
 
 div {
@@ -20,7 +37,10 @@ div {
 
 p {
 	color:green;
-	font-weight: bold;
 	font-size: 20px;
-	margin-left: 320px;
+	margin-left: 330px;
+}
+
+span{
+	font-weight: bold;
 }
