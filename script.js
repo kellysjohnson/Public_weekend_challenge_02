@@ -1,8 +1,8 @@
 var classArray = ["Erik Johnson", "Aaron Sawyer", "Alicia Smith", "Casie Lynch", "Clare Jacky", "Cody Misura", "Jeanne Erickson Cooley", "Kaitlin Muth", "Kelly Johnson", "Luke Poppe", "Mary White", "Michael Liquori", "Michelle Funk", "Rom Stevens", "Steve Martin", "Terry Gunderson", "Tracy Fuller", "Vince Jones", "Brian Aamodt", "Chelsea Okey"];﻿
 var familyArray = ["Annabelle", "Samantha", "Isaac", "Amanda", "Kodi", "Kelly", "Jacob"];
 var numSelected;  // Make numSelected a global variable, because I will want to use it outside the .button .on() "click".
-var teamSize;
-var remainder;
+var numOfTeams;     // Whole number = minimum number per team
+var remainder;	  // Number left over without reaching team minimum
 
 /*
  * Randomize array element order in-place.
@@ -31,11 +31,22 @@ $(document).ready(function(){
 	$("div").on("click", ".generate", function(){
 		shuffleArray(classArray);
 		console.log(classArray);
-		var test = 20 % 3;
-		console.log(test);
-		var test2 = 6.66666;
-		test2 = Math.floor(test2);
-		console.log(test2);
+		
+		remainder = classArray.length % numSelected;
+		console.log(remainder);
+		numOfTeams = classArray.length / numSelected;
+		numOfTeams = Math.floor(numOfTeams);
+		console.log(numOfTeams);
+
+		// for (var i=1; i<=numOfTeams; i++){
+		// 	var Team = "Team " + i; 
+		var i=1;
+		var trial = classArray.splice(((numSelected)*i), numSelected);
+		console.log(trial);
+
+		// }
+
+		
 
 		//use an Array to store 'numSelected' number of names
 		//load headings for each team.  Team 1
