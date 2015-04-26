@@ -1,8 +1,10 @@
 var classArray = ["Erik Johnson", "Aaron Sawyer", "Alicia Smith", "Casie Lynch", "Clare Jacky", "Cody Misura", "Jeanne Erickson Cooley", "Kaitlin Muth", "Kelly Johnson", "Luke Poppe", "Mary White", "Michael Liquori", "Michelle Funk", "Rom Stevens", "Steve Martin", "Terry Gunderson", "Tracy Fuller", "Vince Jones", "Brian Aamodt", "Chelsea Okey"];﻿
 var familyArray = ["Annabelle", "Samantha", "Isaac", "Amanda", "Kodi", "Kelly", "Jacob"];
-var numSelected;  // Make numSelected a global variable, because I will want to use it outside the .button .on() "click".
+var numSelected;  	// Make numSelected a global variable, because I will want to use it outside the .button .on() "click".
 var numOfTeams;     // Whole number = minimum number per team
-var remainder;	  // Number left over without reaching team minimum
+var remainder;	  	// Number left over without reaching team minimum
+var m;				// Index counter global so prototype function can use it
+var clear = 1;
 
 /*
  * Randomize array element order in-place.
@@ -18,6 +20,15 @@ function shuffleArray(array) {
         array[j] = temp;
     }
     return array;
+}
+
+function Team (team) {
+	this.name = name;
+
+}
+
+Team.prototype.Assemble = function () {
+	this.setup = classArray.splice(((numSelected)*m), numSelected);
 }
 
 $(document).ready(function(){
@@ -38,13 +49,25 @@ $(document).ready(function(){
 		numOfTeams = Math.floor(numOfTeams);
 		console.log(numOfTeams);
 
-		// for (var i=1; i<=numOfTeams; i++){
-		// 	var Team = "Team " + i; 
-		var i=1;
-		var trial = classArray.splice(((numSelected)*i), numSelected);
-		console.log(trial);
+		if (clear == 1){
+			for (m=0; m<=(numOfTeams); m++){
+				var teamID = "Team " + (m+1);
+				console.log(teamID);
 
-		// }
+				var newTeam = new Team(teamID);
+		//	console.log(newTeam);
+				$(".results").append("<div class='names'>" + teamID + ": </div>");
+				$(".names").append("<div>" + newTeam.setup + "</div>");
+				$(".names").delay(m*500);
+			} 
+			clear++;
+			console.log("Clear after for loop " + clear);
+
+		} else {
+			clear--;
+			$(".results").children().remove();
+			console.log("Clear is " + clear);
+		}
 
 		
 
