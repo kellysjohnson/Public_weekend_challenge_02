@@ -1,0 +1,26 @@
+.button {
+	border: black;
+	background-color: #CCD6E0;
+	height:100px;
+	width:100px;
+	border-radius: 10px;
+	text-align: center;
+	display:inline-table;
+	font-size: 50px;
+	color:#52565A;
+}
+
+.generate{
+
+}
+
+div {
+	display: inline-table;
+}
+
+p {
+	color:green;
+	font-weight: bold;
+	font-size: 20px;
+	margin-left: 320px;
+}
