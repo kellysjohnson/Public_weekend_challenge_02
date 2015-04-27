@@ -23,14 +23,14 @@ function shuffleArray(array) {
     return array;
 }
 
-function Team (team, array, numSelected) {
-	this.name = team;
-	this.teamArray = classArray;
-}
+// function Team (team, array, numSelected) {
+// 	this.name = team;
+// 	this.teamArray = classArray;
+// }
 
-Team.prototype.Assemble = function () {
-	this.teamArray = classArray.slice(0, numSelected);
-}
+// Team.prototype.Assemble = function () {
+// 	this.teamArray = classArray.slice(0, numSelected);
+// }
 
 
 $(document).ready(function(){
@@ -45,43 +45,64 @@ $(document).ready(function(){
 		console.log(classArray);
 		
 		remainder = classArray.length % numSelected;
-		console.log(remainder);
+		console.log("Remainder: " + remainder);
 		numOfTeams = classArray.length / numSelected;
 		numOfTeams = Math.floor(numOfTeams);
-		console.log(numOfTeams);
+		console.log("Num of teams: " + numOfTeams);
 
-		var hello = classArray.slice(0, numSelected);
-		console.log("This is a splice result  " + hello);
-		console.log("Remainder is " + remainder);
+		// var hello = classArray.slice(0, numSelected);
+		// console.log("This is a splice result  " + hello);
+		// console.log("Remainder is " + remainder);
 
-		if(remainder != 0) {
-			var newNum = numSelected++;
-			hello = classArray.slice(0, newNum);
-			remainder = remainder--;
-			newNum = newNum -1;
-		} 
+		// if(remainder != 0) {
+		// 	var newNum = numSelected++;
+		// 	hello = classArray.slice(0, newNum);
+		// 	remainder = remainder - 1;
+		// 	newNum = newNum -1;
+		// } 
 
-		console.log("This is new remainder " + remainder);
-		console.log("This is new hello " + hello);
+		// console.log("This is new remainder " + remainder);
+		// console.log("This is new hello " + hello);
 
-		if (clear == 1){
+
+//**Let's try simpler!!!!
+
+if (clear == 1){
+	for (var l=1; l<=numOfTeams; l++){
+	 		teamID = "Team " + l;
+	 		console.log("Made team " + l);
+	 		$(".results").append("<div class='names" + l + "'> Team " + l + ": </div>");
+			$(".names" + l).append(classArray.splice(0,numSelected));
+			console.log("Added names to team");
+		}
+		clear++; 
+		console.log("This is clear at the end of if" + clear);
+	}
+		else {
+			$(".results").children().remove();
+			clear--;
+			console.log("This is clear at the end of else" + clear);
+		}
+
+
+
+
 
 //**So sad, abandoing elegant solution for BFI
-			for (m=0; m<= numOfTeams; m++){
+			// for (m=0; m<= numOfTeams; m++){
 				
-				teamID = "Team " + (m+1);
-				console.log(teamID);
+			// 	teamID = "Team " + (m+1);
+			// 	console.log(teamID);
 
-				var newTeam = new Team(teamID, classArray, numSelected);
-				console.log(newTeam);
+			// 	var newTeam = new Team(teamID, classArray, numSelected);
+			// 	console.log(newTeam);
 
 
-				$(".results").append("<div class='names'> Team " + m + ": </div>");
-				$(".names").append("<div>" + newTeam.teamArray + "</div>");
-				$(".names").delay(5000);
+			// 	$(".results").append("<div class='names'> Team " + m + ": </div>");
+			// 	$(".names").append("<div>" + newTeam.teamArray + "</div>");
+			// 	$(".names").delay(5000);
 
-				console.log(classArray);
-			} 
+			// } 
 
 //**Start below BFI
    //As an interesting side bar: BFI does not work.  The console.log displays correct output.  However, the DOM counts down from 10 members per team to 2.  
@@ -165,14 +186,6 @@ $(document).ready(function(){
 		// 	// 	break;
 		// 	else { console.log("FAIL!");}
 
-			clear++;
-//			console.log("Clear after for loop " + clear);
-
-		} else {
-			clear--;
-			$(".results").children().remove();
-//			console.log("Clear is " + clear);
-		}
 
 	});
 
