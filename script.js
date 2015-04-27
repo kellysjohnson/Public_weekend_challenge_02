@@ -22,14 +22,15 @@ function shuffleArray(array) {
     return array;
 }
 
-function Team (team) {
+function Team (team, array, number) {
 	this.name = name;
-	this.setup = [];
+	this.teamArray = classArray;
+	this.numSelected = numSelected
 
 }
 
 Team.prototype.Assemble = function () {
-	this.setup = classArray.splice(0, numSelected);
+	this.teamArray = classArray.splice(0, numSelected);
 }
 
 $(document).ready(function(){
@@ -51,22 +52,95 @@ $(document).ready(function(){
 		console.log(numOfTeams);
 
 		if (clear == 1){
+
 //**So sad, abandoing elegant solution for BFI
-			// for (m=1; m<= numOfTeams; m++){
-			// 	var teamID = "Team " + m;
-			// 	console.log(teamID);
+			for (m=1; m<= numOfTeams; m++){
+				
+				var teamID = "Team " + m;
+				console.log(teamID);
 
-			// 	var newTeam = new Team(teamID,classArray,numSelected);
-			// 	console.log(newTeam);
+				var newTeam = new Team(teamID,classArray,numSelected);
+				console.log(newTeam);
 
-			// 	$(".results").append("<div class='names'> Team " + m + ": </div>");
-			// 	$(".names").append("<div>" + newTeam.setup + "</div>");
-			// 	$(".names").delay(m*15000);
-			// 	console.log(classArray);
-			// } 
+				$(".results").append("<div class='names'> Team " + m + ": </div>");
+				$(".names").append("<div>" + newTeam.setup + "</div>");
+				$(".names").delay(5000);
+
+				console.log(classArray);
+			} 
+
 //**Start below BFI
-			
-			
+		// if (numSelected == 2) {
+		// 		team1 = classArray.splice(0, numSelected);
+		// 		team2 = classArray.splice(0, numSelected);
+		// 		team3 = classArray.splice(0, numSelected);
+		// 		team4 = classArray.splice(0, numSelected);
+		// 		team5 = classArray.splice(0, numSelected);
+		// 		team6 = classArray.splice(0, numSelected);
+		// 		team7 = classArray.splice(0, numSelected);
+		// 		team8 = classArray.splice(0, numSelected);
+		// 		team9 = classArray.splice(0, numSelected);
+		// 		team10 = classArray.splice(0, numSelected);
+
+		// 		console.log(team1);
+		// 		console.log(team2);
+		// 		console.log(team3);
+		// 		console.log(team4);
+
+		// 	 	$(".names").append("<div class='team'>" + team1 + "</div>");
+		// 	 	$(".names").append("<div class='team'>" + team2 + "</div>");
+		// 	 	$(".names").append("<div class='team'>" + team3 + "</div>");
+		// 	 	$(".names").append("<div class='team'>" + team4 + "</div>");
+
+		// 		$(".results").append("<div class='names'> Team 1: </div>");
+		// 	 	$(".results").append("<div class='names'> Team 2: </div>");
+		// 	 	$(".results").append("<div class='names'> Team 3: </div>");
+		// 	 	$(".results").append("<div class='names'> Team 4: </div>");
+
+			 				 	
+				
+		// 	 	// $(".results").append("<div class='names'> Team 5: </div>");
+		// 	 	// $(".names").append("<div>" + team5[0] + "</div>");
+		// 	 	// $(".names").append("<div>" + team5[1] + "</div>");
+
+		// 	 	// $(".results").append("<div class='names'> Team 6: </div>");
+		// 	 	// $(".names").append("<div>" + team6[0] + "</div>");
+		// 	 	// $(".names").append("<div>" + team6[1] + "</div>");
+
+		// 	 	// $(".results").append("<div class='names'> Team 7: </div>");
+		// 	 	// $(".names").append("<div>" + team7[0] + "</div>");
+		// 	 	// $(".names").append("<div>" + team7[1] + "</div>");
+
+		// 	 	// $(".results").append("<div class='names'> Team 8: </div>");
+		// 	 	// $(".names").append("<div>" + team8[0] + "</div>");
+		// 	 	// $(".names").append("<div>" + team8[1] + "</div>");
+
+		// 	 	// $(".results").append("<div class='names'> Team 9: </div>");
+		// 	 	// $(".names").append("<div>" + team9[0] + "</div>");
+		// 	 	// $(".names").append("<div>" + team9[1] + "</div>");			 				 	
+				
+		// 	 	// $(".results").append("<div class='names'> Team 10: </div>");
+		// 	 	// $(".names").append("<div>" + team10[0] + "</div>");
+		// 	 	// $(".names").append("<div>" + team10[1] + "</div>");
+		// 	}
+
+		// 	// case 3:
+		// 	// 	this.strength -= 2;
+		// 	// 	this.mentalStrength -= 2;
+		// 	// 	this.evasion += 10;
+		// 	// 	break;
+		// 	// case 4:
+		// 	// 	this.strength -= 2;
+		// 	// 	this.mentalStrength += 10;
+		// 	// 	this.evasion += 5;
+		// 	// 	break;
+		// 	// case "TELEPATHY":
+		// 	// 	this.strength -= 2;
+		// 	// 	this.mentalStrength += 15;
+		// 	// 	this.evasion -= 2;
+		// 	// 	break;
+		// 	else { console.log("FAIL!");}
+
 			clear++;
 //			console.log("Clear after for loop " + clear);
 
