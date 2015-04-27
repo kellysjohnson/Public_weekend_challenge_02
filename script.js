@@ -86,7 +86,7 @@ if (clear == 1){
 			targetParent.append(elementAdd);
 			elementAdd = targetParent.children().last();
 
-			elementAdd.hide().delay(m+ * 500).slideDown();
+			elementAdd.hide().delay(m * 250).slideDown();
 			
 			count++;
 				if(count > numOfTeams){
