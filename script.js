@@ -5,6 +5,7 @@ var numOfTeams;     // Whole number = minimum number per team
 var remainder;	  	// Number left over without reaching team minimum
 var m;				// Index counter global so prototype function can use it
 var clear = 1;
+var teamID;
 
 /*
  * Randomize array element order in-place.
@@ -22,23 +23,21 @@ function shuffleArray(array) {
     return array;
 }
 
-function Team (team, array, number) {
-	this.name = name;
+function Team (team, array, numSelected) {
+	this.name = team;
 	this.teamArray = classArray;
-	this.numSelected = numSelected
-
 }
 
 Team.prototype.Assemble = function () {
-	this.teamArray = classArray.splice(0, numSelected);
+	this.teamArray = classArray.slice(0, numSelected);
 }
+
 
 $(document).ready(function(){
 
 	$("div").on("click", ".button", function(){
 		numSelected = $(this).attr("value");
 		console.log(numSelected);
-
 	});
 
 	$("div").on("click", ".generate", function(){
@@ -51,25 +50,43 @@ $(document).ready(function(){
 		numOfTeams = Math.floor(numOfTeams);
 		console.log(numOfTeams);
 
+		var hello = classArray.slice(0, numSelected);
+		console.log("This is a splice result  " + hello);
+		console.log("Remainder is " + remainder);
+
+		if(remainder != 0) {
+			var newNum = numSelected++;
+			hello = classArray.slice(0, newNum);
+			remainder = remainder--;
+			newNum = newNum -1;
+		} 
+
+		console.log("This is new remainder " + remainder);
+		console.log("This is new hello " + hello);
+
 		if (clear == 1){
 
 //**So sad, abandoing elegant solution for BFI
-			for (m=1; m<= numOfTeams; m++){
+			for (m=0; m<= numOfTeams; m++){
 				
-				var teamID = "Team " + m;
+				teamID = "Team " + (m+1);
 				console.log(teamID);
 
-				var newTeam = new Team(teamID,classArray,numSelected);
+				var newTeam = new Team(teamID, classArray, numSelected);
 				console.log(newTeam);
 
+
 				$(".results").append("<div class='names'> Team " + m + ": </div>");
-				$(".names").append("<div>" + newTeam.setup + "</div>");
+				$(".names").append("<div>" + newTeam.teamArray + "</div>");
 				$(".names").delay(5000);
 
 				console.log(classArray);
 			} 
 
 //**Start below BFI
+   //As an interesting side bar: BFI does not work.  The console.log displays correct output.  However, the DOM counts down from 10 members per team to 2.  
+   //what ^^.  I can't find anything to say why that makes sense.
+
 		// if (numSelected == 2) {
 		// 		team1 = classArray.splice(0, numSelected);
 		// 		team2 = classArray.splice(0, numSelected);
@@ -86,19 +103,26 @@ $(document).ready(function(){
 		// 		console.log(team2);
 		// 		console.log(team3);
 		// 		console.log(team4);
+		// 		console.log(team5);
+		// 		console.log(team6);
+		// 		console.log(team7);
+		// 		console.log(team8);
+		// 		console.log(team9);
+		// 		console.log(team10);
 
-		// 	 	$(".names").append("<div class='team'>" + team1 + "</div>");
-		// 	 	$(".names").append("<div class='team'>" + team2 + "</div>");
-		// 	 	$(".names").append("<div class='team'>" + team3 + "</div>");
-		// 	 	$(".names").append("<div class='team'>" + team4 + "</div>");
 
 		// 		$(".results").append("<div class='names'> Team 1: </div>");
 		// 	 	$(".results").append("<div class='names'> Team 2: </div>");
 		// 	 	$(".results").append("<div class='names'> Team 3: </div>");
 		// 	 	$(".results").append("<div class='names'> Team 4: </div>");
 
-			 				 	
+
+		// 	 	$(".names").append("<div class='team'>" + team1 + "</div>");
+		// 	 	$(".names").append("<div class='team'>" + team2 + "</div>");
+		// 	 	$(".names").append("<div class='team'>" + team3 + "</div>");
+		// 	 	$(".names").append("<div class='team'>" + team4 + "</div>");			 	
 				
+
 		// 	 	// $(".results").append("<div class='names'> Team 5: </div>");
 		// 	 	// $(".names").append("<div>" + team5[0] + "</div>");
 		// 	 	// $(".names").append("<div>" + team5[1] + "</div>");
