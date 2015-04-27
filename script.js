@@ -1,3 +1,5 @@
+//Functionally works for randomizer, still needs to be properly formatted with css.
+
 var classArray = ["Erik Johnson", "Aaron Sawyer", "Alicia Smith", "Casie Lynch", "Clare Jacky", "Cody Misura", "Jeanne Erickson Cooley", "Kaitlin Muth", "Kelly Johnson", "Luke Poppe", "Mary White", "Michael Liquori", "Michelle Funk", "Rom Stevens", "Steve Martin", "Terry Gunderson", "Tracy Fuller", "Vince Jones", "Brian Aamodt", "Chelsea Okey"];﻿
 var familyArray = ["Annabelle", "Samantha", "Isaac", "Amanda", "Kodi", "Kelly", "Jacob"];
 var numSelected;  	// Make numSelected a global variable, because I will want to use it outside the .button .on() "click".
@@ -65,27 +67,41 @@ $(document).ready(function(){
 		// console.log("This is new hello " + hello);
 
 
-//**Let's try simpler!!!!
+//**Let's try simpler!!!!  Thanks to help from Rom and Scott, see below:
+
+var count = 1;
 
 if (clear == 1){
-	for (var l=1; l<=numOfTeams; l++){
+	
+		for (var l=1; l<=numOfTeams; l++){
 	 		teamID = "Team " + l;
+	 		$(".results").append("<div class='names" + l + "'> Team " + l + ": </div>");	
 	 		console.log("Made team " + l);
-	 		$(".results").append("<div class='names" + l + "'> Team " + l + ": </div>");
-			$(".names" + l).append(classArray.splice(0,numSelected));
-			console.log("Added names to team");
+	 	}
+
+	 	for(m = 0; m < classArray.length; m++){
+			var targetParent = $('.names' + count);
+			var elementAdd = "<p>" + classArray[m] + "</p>";
+			
+			targetParent.append(elementAdd);
+			elementAdd = targetParent.children().last();
+
+			elementAdd.hide().delay(m+ * 500).slideDown();
+			
+			count++;
+				if(count > numOfTeams){
+					count = 1;
+				}
 		}
 		clear++; 
+		
 		console.log("This is clear at the end of if" + clear);
 	}
 		else {
-			$(".results").children().remove();
-			clear--;
-			console.log("This is clear at the end of else" + clear);
+				$(".results").children().remove();
+				clear--;
+				console.log("This is clear at the end of else" + clear);
 		}
-
-
-
 
 
 //**So sad, abandoing elegant solution for BFI
